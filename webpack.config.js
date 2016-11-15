@@ -11,12 +11,17 @@ var config = {
         filename : "bundle.js",
         publicPath : "/app/"
     },
-    modules:{
+    devServer:{
+        inline:true,
+        port:3333,
+        historyApiFallback: true
+    },
+    module:{
         loaders :[
             {
                 test : /\.js?/,
                 include : SRC_DIR,
-                loader : "babel-loader",
+                loader : "babel",
                 query:{
                     presets:[
                         "react",
@@ -25,6 +30,10 @@ var config = {
                     ]
                 }
 
+            },
+            {
+                test   : /\.scss$/,
+                loaders: ["style", "css", "sass"]
             }
         ]
     }
